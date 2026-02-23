@@ -76,6 +76,6 @@ class EmployeeResource
 
     function get_profile()
     {
-        return $this->client->get('/employee/profile');
+        return $this->client->get('/me/profile');
     }
 }
