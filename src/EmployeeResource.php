@@ -22,6 +22,16 @@ class EmployeeResource
     //     return $this->client->post_json('/employee/update_avatar', $data);
     // }
 
+    function register($employee)
+    {
+        return $this->client->post_json('/auth/employee/register', $employee);
+    }
+
+    function verify($code)
+    {
+        return $this->client->post_json('/auth/employee/verify', ['code' => $code]);
+    }
+
     function login($username, $password)
     {
         $data = array('username' => $username, 'password' => $password);
@@ -34,14 +44,14 @@ class EmployeeResource
         return $this->client->get('/me/timesheets', $data);
     }
 
-    function verify($code)
+    function time_in()
     {
-        return $this->client->post_json('/auth/employee/verify', ['code' => $code]);
+        return $this->client->post_json('/dtr/time_in', ['work_code' => 1]);
     }
 
-    function register($employee)
+    function time_out()
     {
-        return $this->client->post_json('/auth/employee/register', $employee);
+        return $this->client->post_json('/dtr/time_out', ['work_code' => 0]);
     }
 
     function get_leaves()
