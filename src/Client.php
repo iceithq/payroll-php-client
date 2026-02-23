@@ -40,6 +40,11 @@ class Client
         return new EmployeeResource($this);
     }
 
+    function get_work_codes()
+    {
+        return $this->get('/work_codes');
+    }
+
     function get_genders()
     {
         return $this->get('/genders');
