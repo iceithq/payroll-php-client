@@ -55,6 +55,11 @@ class Client
         return $this->get('/civil_statuses');
     }
 
+    function get_leave_types()
+    {
+        return $this->get('/leave_types');
+    }
+
     // Private functions
     function get($url, $data = [], $headers = [])
     {
@@ -83,11 +88,12 @@ class Client
 
         // Debug URL
         if ($this->app_debug) {
+
             echo 'curl -X GET "' . $params . '" ';
             foreach ($final_headers as $h) {
                 echo '  -H "' . $h . '" ';
             }
-            echo "\n";
+            echo endl();
         }
 
         // cURL options
@@ -238,5 +244,12 @@ class Client
 
         // Return decoded object or null if response is empty
         return $output ? json_decode($output) : null;
+    }
+}
+
+if (!function_exists('endl')) {
+    function endl()
+    {
+        return php_sapi_name() === 'cli' ? "\n" : "<br>";
     }
 }

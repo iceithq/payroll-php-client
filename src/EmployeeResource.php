@@ -44,6 +44,11 @@ class EmployeeResource
         return $this->client->get('/me/timesheets', $data);
     }
 
+    function get_payslips()
+    {
+        return $this->client->get('/me/payslips');
+    }
+
     function time_in()
     {
         return $this->client->post_json('/dtr/time_in', ['work_code' => 1]);
@@ -52,6 +57,16 @@ class EmployeeResource
     function time_out()
     {
         return $this->client->post_json('/dtr/time_out', ['work_code' => 0]);
+    }
+
+    function get_leave_credits()
+    {
+        return $this->client->get('/employee/leave_credits');
+    }
+
+    function get_leave_types()
+    {
+        return $this->client->get('/employee/leave_types');
     }
 
     function get_leaves()
